@@ -33,5 +33,20 @@ namespace Trello.Services
                 throw new ArgumentNullException($"Task id is not nullable");
             return taskData;
         }
+
+        public bool UpdateTask(Task task)
+        {
+            if (task != null)
+            {
+                var taskData = _context.Tasks.SingleOrDefault(t => t.Id == task.Id);
+                if (taskData != null)
+                {
+                    taskData.Title = task.Title;
+                    _context.Tasks.Update(taskData);
+                }
+                return true;
+            }
+            return false;
+        }
     }
 }

@@ -35,5 +35,16 @@ namespace Trello.Controllers
             
             return Ok(task);
         }
+
+
+        [HttpPost]
+        public IActionResult UpdateTask(Task task)
+        {
+            bool hasTaskCreated = _taskService.CreateTask(task);
+            if (!hasTaskCreated)
+                return new EmptyResult();
+
+            return Ok(task);
+        }
     }
 }

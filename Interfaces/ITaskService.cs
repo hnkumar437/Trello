@@ -8,6 +8,7 @@ namespace Trello.Interfaces
     public interface ITaskService
     {
         bool CreateTask(Task task);
+        bool UpdateTask(Task task);
         Task GetTask(int taskId);
     }
 }
